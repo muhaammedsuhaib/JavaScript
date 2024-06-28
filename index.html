@@ -5,22 +5,40 @@
 </head>
 <body>
 
+  <!-- change name  -->
 
 <p id="text">Hy Welcome user</p>
 <button id="userbtn" onclick="changeText()">Click</button>
 <br><br>
-
+  <!-- Show Time  -->
 <button onclick="document.getElementById('time').innerHTML= Date()">Show Time </button>
 <div id="time"></div>
 <br><br>
 
-<h1>The light Bulb</h1>
-<div id="bulb"  style="background: rgb(255, 255, 255); padding: 50px;" ></div> <br>
+ <!-- Operating light  -->
 
-<button id="ightbtn" onclick="lightoprate()">On</button>
-<br><br>
+<h1>Operating light</h1>
+
+<img id="showimage" src="https://www.w3schools.com/js/pic_bulboff.gif" alt="bulb">
+<br>
+<button id="bulbOn" onclick="onBulb()">ON</button>
+<button id="bulbOf" onclick="OfBulb()">OF</button>
+<br><br><br>
+
+
+  <!-- Greeting User  -->
+  <form onsubmit="fromSubmit(event)" >
+   <label>Enter User Name:</label> 
+   <input type="text">
+   <button type="submit" >Enter</button>
+
+  </form>
+<h1 id="greetData"></h1>
 
 <script>
+
+  //  change name  
+
    function changeText(){
         var textelement = document.getElementById('text');
 
@@ -35,22 +53,27 @@
    }
 
 
-   function lightoprate(){
-  var oprationData= document.getElementById('bulb').style.background;
-  var opratebtn = document.getElementById('ightbtn')
-  if(oprationData === 'yellow'){
+      // oprateBulb
 
-    document.getElementById('bulb').style.background='white';
-    console.log(opratebtn);
-    opratebtn.innerHTML='Of'
-    // document.getElementById('lightbtn').innerHTML='OF';
-
-  }else{
-    document.getElementById('bulb').style.background='yellow';
-    opratebtn.innerHTML='On'
-    //  document.getElementById('lightbtn').innerHTML='ON';
-  }
+   function onBulb(){
+     document.getElementById('showimage').src='https://www.w3schools.com/js/pic_bulbon.gif';
    }
+
+   function OfBulb(){
+    document.getElementById('showimage').src='https://www.w3schools.com/js/pic_bulboff.gif'
+   }
+
+
+// Greeting user
+
+function fromSubmit(e){
+  e.preventDefault();
+  var data=document.querySelector('input[type="text"]').value;
+  document.querySelector('input[type="text"]').value ='';
+  document.getElementById('greetData').innerHTML= `Welcome ${data}`;
+}
+
+   
 </script>
 
 </body>
