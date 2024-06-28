@@ -5,13 +5,52 @@
 </head>
 <body>
 
-<h1 id="myHeader">Hello, World!</h1>
-<button onclick="changeText()">Click me</button>
+
+<p id="text">Hy Welcome user</p>
+<button id="userbtn" onclick="changeText()">Click</button>
+<br><br>
+
+<button onclick="document.getElementById('time').innerHTML= Date()">Show Time </button>
+<div id="time"></div>
+<br><br>
+
+<h1>The light Bulb</h1>
+<div id="bulb"  style="background: rgb(255, 255, 255); padding: 50px;" ></div> <br>
+
+<button id="ightbtn" onclick="lightoprate()">On</button>
+<br><br>
 
 <script>
-    function changeText() {
-        document.getElementById("myHeader").innerHTML = "You clicked the button!";
+   function changeText(){
+        var textelement = document.getElementById('text');
+
+    if(textelement.innerHTML === 'Hy Welcome user'){
+
+     textelement.innerHTML= 'Clickd user';
+     document.getElementById('userbtn').innerHTML='clicked'
+    }else{
+    textelement.innerHTML='Hy Welcome user';
+        document.getElementById('userbtn').innerHTML='click'
     }
+   }
+
+
+   function lightoprate(){
+  var oprationData= document.getElementById('bulb').style.background;
+  var opratebtn = document.getElementById('ightbtn')
+  if(oprationData === 'yellow'){
+
+    document.getElementById('bulb').style.background='white';
+    console.log(opratebtn);
+    opratebtn.innerHTML='Of'
+    // document.getElementById('lightbtn').innerHTML='OF';
+
+  }else{
+    document.getElementById('bulb').style.background='yellow';
+    opratebtn.innerHTML='On'
+    //  document.getElementById('lightbtn').innerHTML='ON';
+  }
+   }
 </script>
 
 </body>
