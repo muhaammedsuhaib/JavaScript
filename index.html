@@ -4,37 +4,49 @@
     <title>JavaScript Example</title>
 </head>
 <body>
-
+   <h1 style="text-align: center;">JavaScript Example</h1>
   <!-- change name  -->
-
+<div class="div" style="text-align: center;">
 <p id="text">Hy Welcome user</p>
 <button id="userbtn" onclick="changeText()">Click</button>
 <br><br>
   <!-- Show Time  -->
 <button onclick="document.getElementById('time').innerHTML= Date()">Show Time </button>
 <div id="time"></div>
+</div>
 <br><br>
 
  <!-- Operating light  -->
-
+<div class="lightoprter" style="text-align: center;">
 <h1>Operating light</h1>
 
 <img id="showimage" src="https://www.w3schools.com/js/pic_bulboff.gif" alt="bulb">
 <br>
 <button id="bulbOn" onclick="onBulb()">ON</button>
 <button id="bulbOf" onclick="OfBulb()">OF</button>
+</div>
 <br><br><br>
 
-
+<div class="greeting" style="text-align: center;">
   <!-- Greeting User  -->
   <form onsubmit="fromSubmit(event)" >
    <label>Enter User Name:</label> 
-   <input type="text">
+   <input type="text" id="username">
    <button type="submit" >Enter</button>
 
   </form>
 <h1 id="greetData"></h1>
+</div>
+<br><br>
+<div class="taskmanage" style="text-align: center;">
+<h1>Task Manager</h1>
 
+<form onsubmit="taskHandle(event)">
+  <input type="text" id="taskData">
+  <button onsubmit="submit">Add</button>
+</form>
+<div id="tasks" ></div>
+</div>
 <script>
 
   //  change name  
@@ -68,12 +80,48 @@
 
 function fromSubmit(e){
   e.preventDefault();
-  var data=document.querySelector('input[type="text"]').value;
-  document.querySelector('input[type="text"]').value ='';
+  var data=document.getElementById('username').value;
+  document.getElementById('username').value ='';
   document.getElementById('greetData').innerHTML= `Welcome ${data}`;
 }
 
-   
+// Task add 
+
+var task = [];
+function taskHandle (e){
+  e.preventDefault();
+ var Newdata=document.getElementById('taskData').value;
+ task.push(Newdata);
+ document.getElementById('taskData').value='';
+ updatData()
+}
+
+function updatData(){
+  var taskcontainer = document.getElementById('tasks');
+  taskcontainer.innerHTML='';
+  
+  for(let i=0; i<task.length;i++){
+    var taskElement = document.createElement('div');
+    taskElement.innerHTML=`
+    <h1>${task[i]}</h1>
+    <button onclick='remove(${i})'>🚮</button>
+    <button onclick='edit(${i})'>Edit</button>    
+    `
+ 
+    taskcontainer.appendChild(taskElement);
+  }
+}
+
+  function remove(id){
+    task.splice(id,1)
+    updatData()
+    console.log(id);
+  }
+ function edit(id){
+  var newTask=prompt("Edit youre Task",task[id])
+  task[id]=newTask;
+  updatData()
+ }
 </script>
 
 </body>
