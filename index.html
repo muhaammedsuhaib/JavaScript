@@ -46,7 +46,21 @@
   <input type="text" id="taskData">
   <button onsubmit="submit">Add</button>
 </form>
+
 <div id="tasks" ></div>
+
+
+
+<div class="container">
+  <h1 style="background-color: rgb(101, 101, 101);">Upload Post</h1>
+  <form onsubmit="addPost(event)">
+    <input type="file" id="postData" accept="image/*">
+    <button type="submit">Add post</button>
+  </form>
+  <div id="postes"></div>
+</div>
+
+</div>
 </div>
 <script>
 
@@ -123,7 +137,41 @@ function updatData(){
   task[id]=newTask;
   updatData()
  }
-</script>
 
+ // Add post
+ var post =[];
+ function addPost (e){
+  e.preventDefault();
+  var newPost =document.getElementById('postData').files[0];
+  
+  if(newPost){
+    var reader= new FileReader();
+    reader.onload= function(event){
+      post.push(event.target.result);
+      document.getElementById('postData').value='';
+      showPost();
+    };
+    reader.readAsDataURL(newPost)
+  }  
+}
+
+function showPost (){
+  var allpost = document.getElementById('postes')
+ allpost.innerHTML='';
+ allpost.style.textAlign='center'
+  for(let i =0 ;i<post.length;i++){
+    var createElement = document.createElement('img')
+  
+    createElement.src=post[i];
+    createElement.style.width='300px';
+    createElement.style.height='300px';
+    createElement.style.display='block';
+    createElement.style.margin='0 auto'
+    createElement.style.paddingBottom='20px'
+   allpost.appendChild(createElement)
+  }
+}
+</script>
+<script src="/script.js"></script>
 </body>
 </html>
