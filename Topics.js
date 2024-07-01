@@ -146,3 +146,24 @@ return new Promise((resolve,reject)=>{
 })
 }
 asynchAwaitFunction()
+
+
+
+
+
+//Function scoped & Block scoped
+
+
+function abc(){
+    if(true){
+        var a ='Im a'; // Function scope
+        let b ='Im b'; // Global scope
+        const c ='Im c'; // Global scope
+
+        console.log(a);
+        console.log(b);
+        console.log(c);
+    }
+    console.log(a);  //Functon scoped function acces inside block
+}
+abc()
