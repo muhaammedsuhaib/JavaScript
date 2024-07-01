@@ -99,3 +99,50 @@ console.log(add(10,78));
 // Stay Updated: JavaScript evolves rapidly, so keep up with the latest trends, updates, and best practices.
 // Community Engagement: Join online communities, forums, or attend meetups to learn from others and share your knowledge.
 // Choose the path that aligns with your interests and goals, and don't hesitate to explore different areas of JavaScript to broaden your understanding and skills!
+
+
+
+// call Back Function
+
+
+function callbackFunction(callback){
+
+    setTimeout(()=>{
+        const data= 'callback funton worked';
+        callback(data);
+    })
+}
+
+callbackFunction((data)=>{
+    console.log(data);
+});
+
+
+// Promise 
+
+function promisesFuction(){
+    return new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            const data = 'promise data called';
+            resolve(data);
+        },1000)
+    });
+}
+
+promisesFuction().then((data)=>{
+console.log(data);
+}).catch((error)=>{
+    console.error(error);
+})
+
+
+async function asynchAwaitFunction(){
+
+return new Promise((resolve,reject)=>{
+    setTimeout(()=>{
+        const data ='Async await function working';
+     resolve(data);
+    },1000)
+})
+}
+asynchAwaitFunction()
