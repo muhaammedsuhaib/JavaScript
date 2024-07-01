@@ -166,4 +166,47 @@ function abc(){
     }
     console.log(a);  //Functon scoped function acces inside block
 }
+
+// console.log(a);   Not acces outside function var,let,cost
 abc()
+
+
+
+// Default Function Parameter 
+
+function dfunction (user = 'Gust'){
+    console.log(`Welcome ${user}`);
+}
+
+dfunction();
+dfunction('suhaib')
+
+
+// Anonymouse Function 
+
+let AnonymouseFunction = function (){
+    console.log('Im Anonymouse Function');
+}
+
+AnonymouseFunction();
+
+
+
+// Arrow Function 
+
+let arrowFunctiion = ()=> console.log('Im a arrow function');
+
+arrowFunctiion()
+
+
+// Arrow Functiion in multiple statemnt 
+
+let checknumber = (num)=>{
+if(0<num){
+    console.log('Number is  postive');
+}else{
+    console.log('Number is negative');
+}
+}
+
+checknumber(-199)
