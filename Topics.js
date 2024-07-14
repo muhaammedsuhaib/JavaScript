@@ -209,4 +209,28 @@ if(0<num){
 }
 }
 
-checknumber(-199)
+checknumber(-199);
+
+
+
+// Fuctory functions  
+
+function createPerson(name,age){
+return {
+    name:name,
+    age:age,
+    greet:function(){
+        console.log(`Hello , my name is ${this.name} and I am ${this.age} year old.`);
+    }
+}
+}
+
+const person1 =createPerson('suhaib',20);
+const person2 = createPerson('Ronaldo',49);
+const person3 = createPerson('Messi',39);
+
+person1.greet();
+person2.greet();
+person3.greet();
+
+
