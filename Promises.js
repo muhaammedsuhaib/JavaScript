@@ -32,7 +32,7 @@ const promises =new Promise((resolve,reject)=>{
     }).then(data=>resolve(data)).catch(error=>reject(error))
 })
 
-promises.then(data=>console.log(data.title)).catch(error=>console.log(error));
+promises.then(data=>console.log(data)).catch(error=>console.log(error));
 
 // Chaining promise 
 

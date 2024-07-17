@@ -35,4 +35,27 @@ function fetchDate(callback){
 
 fetchDate((data)=>{
     console.log(data);
-})
+});
+
+
+// Higher-Order Functions
+// Functions as Arguments and Return Values: Functions can be passed as arguments to other functions and returned from functions.
+
+function greet(name) {
+    return `Hello, ${name}`;
+  }
+  function logGreeting(fn, name) {
+    console.log(fn(name));
+  }
+  logGreeting(greet, 'John'); // 'Hello, John'
+  
+  function createMultiplier(multiplier) {
+    return function(number) {
+      return number * multiplier;
+    };
+  }
+  const double = createMultiplier(2);
+  const triple = createMultiplier(3);
+  console.log(double(4)); // 8
+  console.log(triple(4)); // 12
+  
