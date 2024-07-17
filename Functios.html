@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fumctions</title>
+</head>
+<body>
+    <div class="box" style="display: grid; justify-content: center; align-items: center; height: 100vh;">
+        <div class="main">
+        <div id="tutorial" style="background-color: wheat; color: darksalmon;"></div>
+        <button onclick="a()">Function Declaration</button>
+        <button onclick="b()">Function Expresion</button>
+    </div>
+    </div>
+    <script>
+        // Function Declaration 
+        function a(){
+            const data = document.getElementById('tutorial');
+            const pElemnt =data.querySelector('h1');
+
+            if(!pElemnt){
+                const create=document.createElement('h1')
+            create.innerHTML=`function greet() {
+    console.log("Hello");
+}`;
+            data.appendChild(create);
+            }else{
+                if(pElemnt.style.display==='none'){
+                    pElemnt.style.display='block';
+                }else{
+                    pElemnt.style.display='none';
+                }
+            }
+            
+        }
+       function b(){
+        const data=document.getElementById('tutorial')
+        const pElemnt=  data.querySelector('h1')
+        if (!pElemnt) {
+            const create=document.createElement('h1');
+            create.innerHTML=`const greet = function() {
+    console.log("Hello");
+};`
+            data.appendChild(create);
+        } else {
+            if(pElemnt.style.display==='none'){
+                pElemnt.style.display='block';
+            }else{
+                pElemnt.style.display='none'
+            }
+        }
+       }
+    </script>
+</body>
+</html>

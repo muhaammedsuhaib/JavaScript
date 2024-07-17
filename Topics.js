@@ -234,3 +234,47 @@ person2.greet();
 person3.greet();
 
 
+// Constructor 
+
+function User (name){
+    this.name=name
+}
+
+var user1 = new User('anu');
+var user2 = new User('binu');
+console.log(user1);
+console.log(user2);
+
+
+
+
+// Evet loop 
+
+// Javascript is single thered languge 
+
+// JS engine V8 google 
+
+// 1.Stack 
+// 2.Heap 
+// 3.Message queue 
+
+function abc(){
+    console.log('abc');
+}
+
+function def(){
+    console.log('def');
+}
+function ggg(){
+    abc();
+    def();
+
+}
+
+ggg();
+
+// Before stack 
+// stack : ggg(),abc(),def();
+// After Stack 
+// stack : 
+
