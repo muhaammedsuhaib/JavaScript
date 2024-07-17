@@ -17,6 +17,23 @@ if(success){
 
 console.log(promise);
 
+
+
+// Promises 
+
+
+const promises =new Promise((resolve,reject)=>{
+    fetch(`https://fakestoreapi.com/products/1`)
+    .then((res)=>{
+        if(!res){
+            console.log(`Net work resonse not ok`);
+        }
+        return res.json();
+    }).then(data=>resolve(data)).catch(error=>reject(error))
+})
+
+promises.then(data=>console.log(data.title)).catch(error=>console.log(error));
+
 // Chaining promise 
 
 function anotherPromise(data){
@@ -38,82 +55,3 @@ promise.then(result=>{
     console.error(error);
 })
 
-
-function greet() {
-    console.log('Hello ' + this.name);
-  }
-  
-  const user = { name: 'Muhammed Suhaib' };
-  greet.call(user); // Output: Hello Muhammed Suhaib
-
-
-// Get min value 
-
-function getminValue(arr){
-    console.log(Math.min.apply(null,arr))
-}
-getminValue([100,26,73,38]);
-
-
-
-
-// call apply bind 
-
-
-// call 
-function greet (){
-    console.log(`hi ${this.name}`)
-}
-
-const person1={name:'Muhammed suhaib'};
-
-greet.call(person1);
-
-// apply 
-
-function greeting(h,b){
-console.log(`${h} -${this.name}- ${b} `);
-}
-
-const person3={name:"Muhammed suhaib"}
-greeting.apply(person3,['hello','!']);
-
-
-// Bind 
-
-function greetingbind(){
-    console.log('Hello ' + this.name);
-}
-
-const person6={name:"MUHAMMED SUHAIB"};
-
-const bindfunction =greetingbind.bind(person6);
-bindfunction();
-
-// carbage collection 
-
-let obj = { name: "Object" };
-obj = null; // The object is no longer needed, and its memory can be reclaimed by the garbage collector.
-
-
-// Pass by value 
-
-function modifyValue(x){
-    console.log(x);
-   x=10;
-}
- 
-const newValue=140;
-modifyValue(newValue);
-console.log(newValue);
-
-
-// Pass by Refrence 
-
-function modifyObject(obj) {
-    obj.value = 10;
-}
-
-let myObj = { value: 5 };
-modifyObject(myObj);
-console.log(myObj.value)
