@@ -44,14 +44,3 @@ return new Promise ((resolve,reject)=>{
 })
 }
 
-
-promise.then(result=>{
-    console.log(result);
-    return anotherPromise(result)
-}).then((anotherResult)=>{
-    console.log(anotherResult)
-})
-.catch((error)=>{
-    console.error(error);
-})
-
