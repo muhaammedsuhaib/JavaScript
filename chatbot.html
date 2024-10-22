@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chatbot</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto mt-10">
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <div id="chat-output" class="h-64 overflow-auto p-3 bg-gray-900 text-white mb-4 rounded-lg">
+                <p>AI: Hello! How can I assist you today?</p>
+            </div>
+            <div class="flex">
+                <input id="chat-input" class="flex-grow p-2 border border-gray-300 rounded-l-lg focus:outline-none" placeholder="Type your message...">
+                <button id="send-btn" class="p-2 bg-blue-500 text-white rounded-r-lg">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="chatbot.js"></script>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const chatOutput = document.getElementById('chat-output');
+    const chatInput = document.getElementById('chat-input');
+    const sendBtn = document.getElementById('send-btn');
+
+    // Function to simulate AI responses
+    function getBotResponse(userMessage) {
+        let message = userMessage.toLowerCase();
+
+        // Simple response logic
+        if (message.includes('hello')) {
+            return 'Hello! How can I help you today?';
+        } else if (message.includes('how are you')) {
+            return "I'm just a bot, but I'm doing great! What about you?";
+        } else if (message.includes('your name')) {
+            return 'I am your helpful AI assistant!';
+        } else if (message.includes('bye')) {
+            return 'Goodbye! Have a great day!';
+        } else {
+            return "I'm not sure how to respond to that. Can you try asking something else?";
+        }
+    }
+
+    // Function to append a message to the chat
+    function appendMessage(sender, message) {
+        const messageElem = document.createElement('p');
+        messageElem.textContent = `${sender}: ${message}`;
+        chatOutput.appendChild(messageElem);
+        chatOutput.scrollTop = chatOutput.scrollHeight;  // Scroll to the bottom
+    }
+
+    // Send message on button click
+    sendBtn.addEventListener('click', () => {
+        const userMessage = chatInput.value.trim();
+        if (userMessage) {
+            appendMessage('You', userMessage);
+            const botResponse = getBotResponse(userMessage);
+            appendMessage('AI', botResponse);
+            chatInput.value = '';  // Clear the input field
+        }
+    });
+
+    // Send message on Enter key press
+    chatInput.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+            sendBtn.click();
+        }
+    });
+});
+
+</script>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Terminal</title>
+    <script defer src="script.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-white">
+    <div class="flex items-center justify-center h-screen">
+        <div class="bg-black w-3/4 md:w-1/2 p-4 rounded-lg">
+            <div id="terminal-output" class="overflow-auto h-64">
+                <p>Welcome to the web terminal! Type a command below.</p>
+            </div>
+            <div class="flex mt-4">
+                <span class="text-green-500">$</span>
+                <input id="terminal-input" class="ml-2 w-full bg-black text-white border-none focus:outline-none" placeholder="Type a command..." />
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const inputField = document.getElementById('terminal-input');
+    const outputDiv = document.getElementById('terminal-output');
+
+    inputField.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+            const input = inputField.value.trim();
+            processCommand(input);
+            inputField.value = '';  // Clear the input field after submission
+        }
+    });
+
+    function processCommand(input) {
+        const output = document.createElement('p');
+        output.classList.add('mb-2');
+        
+        switch (input.toLowerCase()) {
+            case 'help':
+                output.innerText = 'Available commands: help, hello, clear';
+                break;
+            case 'hello':
+                output.innerText = 'Hello, world!';
+                break;
+            case 'clear':
+                outputDiv.innerHTML = '';  // Clear terminal output
+                return;  // Skip appending "undefined" result
+            default:
+                output.innerText = `Command not found: ${input}`;
+        }
+
+        outputDiv.appendChild(output);
+        outputDiv.scrollTop = outputDiv.scrollHeight;  // Scroll to bottom
+    }
+});
+
+</script>
+</html>
